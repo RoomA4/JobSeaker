@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public enum EmployerType {
 
-	EMPLOYEER(1),ACADAMIC_INSTITUTE(2),RECRUTMENT_AJENCY(3);
+	EMPLOYEE(1),ACADAMIC_INSTITUTE(2),RECRUTMENT_AJENCY(3);
 	
 	private int code;
 	

@@ -1,6 +1,7 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,6 +21,20 @@ public class Employer implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public enum Gender{
+		MALE(1),FEMALE(2);
+		
+		private int code;
+		
+		Gender(int code){
+			this.code = code;
+		}
+		
+		public Gender getGender(int code) {
+			return Arrays.stream(Gender.values()).filter(e->e.code==code).findFirst().get();
+		}
+	}
 	@Id
 	private String employerId;
 	@Column
@@ -42,6 +57,15 @@ public class Employer implements Serializable {
 	private double noOfYearInBusiness;
 	@OneToMany(mappedBy="attachementId")
 	private List<Attachment> attachments;
+	
+	private Gender gender;
+	
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 	public String getEmployerId() {
 		return employerId;
 	}
