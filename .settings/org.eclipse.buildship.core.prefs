@@ -1,0 +1,7 @@
+#Sat Dec 09 19:52:34 IST 2017
+connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(E\:\\MySoftware\\gradle-3.5-all\\gradle-3.5))
+override.workspace.settings=true
+gradle.user.home=
+connection.project.dir=
+offline.mode=false
+build.scans.enabled=false
