@@ -4,6 +4,7 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -23,14 +24,32 @@ public class Attachment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String attachementId;
-	@Column
+	
+	@Column(name="ATTACHMENT_NAME")
 	private String attachmentName;
-	@Column
+	
+	@Column(name="ATTACHMENT_TYPE")
 	private AttachmentType attachmentType;
-	@Column
+	
+	/* Need to check to be used or not*/
+	@Column(name="ATTACHMENT_SIZE")
 	private double attachmentSize;
-	@Column
+	
+	@Column(name="ATTACHMENT_DESCRIPTION")
 	private String attachmentDesc;
+	
+	@Column(name="CREATION_DATE")
+	private Date creationTimeStamp;
+	
+	@Column(name="UPDATE_TIMESTAMP")
+	private Date updationTimeStamp;
+	
+	@Column(name="REVISION_CODE")
+	private String RevisionCode;
+	
+	@Column(name="ATTACHMENT_DATA")
+	private Byte[] attachmentData;
+	
 	public String getAttachementId() {
 		return attachementId;
 	}

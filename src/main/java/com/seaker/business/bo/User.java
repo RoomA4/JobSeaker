@@ -4,6 +4,8 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 /**
  * @author Admin
  *
@@ -27,6 +32,20 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
+	public enum Gender{
+		MALE(1),FEMALE(2);
+		
+		private int code;
+		
+		Gender(int code){
+			this.code = code;
+		}
+		
+		/*public Gender getGender(int code) {
+			return Arrays.stream(Gender.values()).filter(e->e.code==code).findFirst().get();
+		}*/
+	}
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String userId;
@@ -35,13 +54,17 @@ public class User implements Serializable {
 	private String userName;
 
 	@Column(name = "USER_ROLE")
-	private com.seaker.business.constant.Role Role;
+	private com.seaker.business.constant.Role role;
 
 	@OneToMany
 	private List<Address> addressList;
 
 	@Column(name = "USER_EMAIL")
 	private String emailAddress;
+	
+	@OneToMany
+	@NotFound(action=NotFoundAction.IGNORE)
+	private List<UserProfile> profiles = new ArrayList<>();
 
 	// todo -- Need to check the feasibility of using this --already having address
 	// field
@@ -55,7 +78,7 @@ public class User implements Serializable {
 	private String mobileNumber;
 
 	@Column(name = "GENDER")
-	private String gender;
+	private Gender gender;
 
 	@OneToMany
 	private List<Attachment> attachmentList;
@@ -81,11 +104,11 @@ public class User implements Serializable {
 	}
 
 	public com.seaker.business.constant.Role getRole() {
-		return Role;
+		return role;
 	}
 
 	public void setRole(com.seaker.business.constant.Role role) {
-		Role = role;
+		this.role = role;
 	}
 
 	public List<Address> getAddressList() {
@@ -120,12 +143,12 @@ public class User implements Serializable {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getGender(String code) {
+		return Gender.valueOf(code).toString();
 	}
 
 	public void setGender(String gender) {
-		this.gender = gender;
+		this.gender = Gender.valueOf(gender);
 	}
 
 	public Address getLocation() {

@@ -1,19 +1,24 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.seaker.business.constant.EmployerType;
 /**
  * @author Admin
  *
  */
+
+@Entity
+@Table(name="EMPLOYER")
 public class Employer implements Serializable {
 
 	
@@ -22,50 +27,39 @@ public class Employer implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public enum Gender{
-		MALE(1),FEMALE(2);
-		
-		private int code;
-		
-		Gender(int code){
-			this.code = code;
-		}
-		
-		public Gender getGender(int code) {
-			return Arrays.stream(Gender.values()).filter(e->e.code==code).findFirst().get();
-		}
-	}
 	@Id
 	private String employerId;
-	@Column
+	
+	@Column(name="EMPLOYER_TYPE")
 	private EmployerType employerType;
-	@Column
+	
+	@Column(name="EMPLOYER_NAME")
 	private String name;
-	@Column
+	
+	@Column(name="EMPLOYER_EMAIL")
 	private String emailAddress;
-	@Column
+	
+	@Column(name="WEBSITE_URL")
 	private String webSite;
-	@Column
+	
+	@Column(name="EMPLOYER_PHONE")
 	private String phoneNumber;
-	@OneToOne
-	private Address branchLocaltion;
-	@Column
+	
+	@OneToMany
+	private List<Address> branchLocaltion = new ArrayList<>();
+	
+	@Column(name="COMPANY_STRENGTH")
 	private String employeeStrength;
-	@Column
+	
+	@Column(name="TURNOVER")
 	private double turnOver;
-	@Column
+	
+	@Column(name="NO_OF_YEARS")
 	private double noOfYearInBusiness;
+	
 	@OneToMany(mappedBy="attachementId")
 	private List<Attachment> attachments;
 	
-	private Gender gender;
-	
-	public Gender getGender() {
-		return gender;
-	}
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
 	public String getEmployerId() {
 		return employerId;
 	}
@@ -102,12 +96,6 @@ public class Employer implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Address getBranchLocaltion() {
-		return branchLocaltion;
-	}
-	public void setBranchLocaltion(Address branchLocaltion) {
-		this.branchLocaltion = branchLocaltion;
-	}
 	public String getEmployeeStrength() {
 		return employeeStrength;
 	}
@@ -131,6 +119,12 @@ public class Employer implements Serializable {
 	}
 	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
+	}
+	public List<Address> getBranchLocaltion() {
+		return branchLocaltion;
+	}
+	public void setBranchLocaltion(List<Address> branchLocaltion) {
+		this.branchLocaltion = branchLocaltion;
 	}
 	
 }

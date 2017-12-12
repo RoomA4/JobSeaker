@@ -6,7 +6,11 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 import java.util.List;
 
-import com.seaker.business.bo.Employer.Gender;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.seaker.business.bo.User.Gender;
 import com.seaker.business.constant.TechnicalExpertise;
 import com.searker.business.attributes.DataAttributes;
 
@@ -14,29 +18,41 @@ import com.searker.business.attributes.DataAttributes;
  * @author Admin
  *
  */
-public class ResumeFormat implements Serializable {
+public class UserProfile implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	private String id;
+	
+	@Column(name="USER_SUMMARY")
 	private String summary;
 	
+	@OneToMany
 	private List<Competencies> coreCompetencies;
 	
+	@OneToMany
 	private List<Experience> experiences;
 	
+	@OneToMany
 	private List<Education> education;
 	
+	@OneToMany
 	private List<Certifications> certifications;
 	
+	@OneToMany
 	private List<Achievements> achievements;
 	
+	@OneToMany
 	private List<Language> languages;
 	
+	@Column(name="ATTRIBUTES")
 	private DataAttributes attributes;
 	
+	@Column(name="COMPENSATION")
 	private double Compensation;
 	
 	public String getSummary() {
@@ -111,24 +127,13 @@ public class ResumeFormat implements Serializable {
 		Compensation = compensation;
 	}
 
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
 	public TechnicalExpertise getExperties() {
 		return experties;
 	}
 
 	public void setExperties(TechnicalExpertise experties) {
 		this.experties = experties;
-	}
-
-	private Gender gender;
-	
+	}	
 	private TechnicalExpertise experties;
 	
 
