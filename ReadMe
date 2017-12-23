@@ -1,2 +1,4 @@
 1. Jobsearker Initial Commit.
 2. Use Gradle version 3.5
+3. Database configuration File added . Use the oracle driver from the class path "C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib" if using
+Oracle Database express Edition.
