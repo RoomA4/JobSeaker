@@ -5,6 +5,9 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 /**
  * @author Admin
  *
@@ -15,9 +18,14 @@ public class Certifications implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private String certificationId;
 
+	@Column(name="CERTIFICATION")
 	private String certificateName;
 	
+	@Column(name="CERTIFICATION_AUTHORITY")
 	private String certificationAuthority;
 	
 	private Duration durations;

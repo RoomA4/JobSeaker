@@ -5,6 +5,8 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+
 /**
  * @author Admin
  *
@@ -16,9 +18,12 @@ public class Achievements implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Column(name="ACHIEVEMENT_NAME")
 	private String achievementName;
 	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
 	
 	private Duration duration;
 

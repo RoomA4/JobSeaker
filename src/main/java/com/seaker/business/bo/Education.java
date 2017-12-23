@@ -2,11 +2,12 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
-public class Education implements Serializable{
+public class Education implements Serializable {
 	
-	/**
-	 * 
-	 */
+	private String name;
+
+	private Duration duration;
+	
 	private static final long serialVersionUID = 1L;
 
 	public String getName() {
@@ -24,9 +25,5 @@ public class Education implements Serializable{
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
-
-	private String name;
-	
-	private Duration duration;
 
 }

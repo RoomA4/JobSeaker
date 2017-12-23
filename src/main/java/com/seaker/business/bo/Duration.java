@@ -20,6 +20,8 @@ public class Duration implements Serializable {
 	
 	private Date startDate;
 	
+	private Date endDate;
+	
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -36,5 +38,5 @@ public class Duration implements Serializable {
 		this.endDate = endDate;
 	}
 
-	private Date endDate;
+	
 }

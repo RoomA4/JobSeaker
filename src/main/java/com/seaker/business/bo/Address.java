@@ -2,6 +2,9 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 public class Address implements Serializable {
 	
 	/**
@@ -9,12 +12,22 @@ public class Address implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Id
 	private String addressId;
+	
+	@Column(name="STREET_NUMBERS")
 	private String streetNumber;
+	
+	@Column(name="VILLAGE_NAME")
 	private String village;
+	
+	@Column(name="CITY")
 	private String city;
+	
+	@Column(name="STATE")
 	private String state;
+	
+	@Column(name="PINCODE")
 	private double pincode;
 	
 	public String getAddressId() {

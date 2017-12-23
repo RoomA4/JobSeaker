@@ -2,7 +2,6 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -45,9 +44,9 @@ public class Employer implements Serializable {
 	@Column(name="EMPLOYER_PHONE")
 	private String phoneNumber;
 	
-	@OneToMany
+	/*@OneToMany
 	private List<Address> branchLocaltion = new ArrayList<>();
-	
+	*/
 	@Column(name="COMPANY_STRENGTH")
 	private String employeeStrength;
 	
@@ -56,10 +55,10 @@ public class Employer implements Serializable {
 	
 	@Column(name="NO_OF_YEARS")
 	private double noOfYearInBusiness;
-	
+	/*
 	@OneToMany(mappedBy="attachementId")
 	private List<Attachment> attachments;
-	
+	*/
 	public String getEmployerId() {
 		return employerId;
 	}
@@ -114,17 +113,17 @@ public class Employer implements Serializable {
 	public void setNoOfYearInBusiness(double noOfYearInBusiness) {
 		this.noOfYearInBusiness = noOfYearInBusiness;
 	}
-	public List<Attachment> getAttachments() {
+	/*public List<Attachment> getAttachments() {
 		return attachments;
 	}
 	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
-	}
-	public List<Address> getBranchLocaltion() {
+	}*/
+	/*public List<Address> getBranchLocaltion() {
 		return branchLocaltion;
 	}
 	public void setBranchLocaltion(List<Address> branchLocaltion) {
 		this.branchLocaltion = branchLocaltion;
-	}
+	}*/
 	
 }

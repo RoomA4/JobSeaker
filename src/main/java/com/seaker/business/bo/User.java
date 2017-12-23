@@ -5,7 +5,6 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -56,20 +55,20 @@ public class User implements Serializable {
 	@Column(name = "USER_ROLE")
 	private com.seaker.business.constant.Role role;
 
-	@OneToMany
-	private List<Address> addressList;
+	/*@OneToMany
+	private List<Address> addressList;*/
 
 	@Column(name = "USER_EMAIL")
 	private String emailAddress;
-	
+	/*
 	@OneToMany
 	@NotFound(action=NotFoundAction.IGNORE)
 	private List<UserProfile> profiles = new ArrayList<>();
-
+*/
 	// todo -- Need to check the feasibility of using this --already having address
 	// field
-	@OneToOne
-	private Address location;
+	/*@OneToOne
+	private Address location;*/
 
 	@Column(name = "USER_SNS")
 	private String SocialNetworkSignature;
@@ -79,10 +78,10 @@ public class User implements Serializable {
 
 	@Column(name = "GENDER")
 	private Gender gender;
-
+/*
 	@OneToMany
 	private List<Attachment> attachmentList;
-
+*/
 	@Column(name = "REGISTRATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration;
@@ -111,13 +110,13 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
-	public List<Address> getAddressList() {
+	/*public List<Address> getAddressList() {
 		return addressList;
 	}
 
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
-	}
+	}*/
 
 	public String getEmailAddress() {
 		return emailAddress;
@@ -151,22 +150,22 @@ public class User implements Serializable {
 		this.gender = Gender.valueOf(gender);
 	}
 
-	public Address getLocation() {
+	/*public Address getLocation() {
 		return location;
 	}
 
 	public void setLocation(Address location) {
 		this.location = location;
 	}
-
-	public List<Attachment> getAttachmentList() {
+*/
+	/*public List<Attachment> getAttachmentList() {
 		return attachmentList;
 	}
 
 	public void setAttachmentList(List<Attachment> attachmentList) {
 		this.attachmentList = attachmentList;
 	}
-
+*/
 	public Date getDateOfRegistration() {
 		return dateOfRegistration;
 	}

@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.seaker.business.bo.User.Gender;
 import com.seaker.business.constant.TechnicalExpertise;
 import com.searker.business.attributes.DataAttributes;
 

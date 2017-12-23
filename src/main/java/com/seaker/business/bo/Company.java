@@ -7,19 +7,36 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Admin
  *
  */
+@Entity
+@Table(name="COMPANY")
 public class Company implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	private String companyId;
+	
 	
 	private List<Address> address;
+
 	
+	private Duration duration;
+	
+	@Column(name="DESCRIPTION")
+	private String description;
+
 	public List<Address> getAddress() {
 		return address;
 	}
@@ -28,21 +45,6 @@ public class Company implements Serializable {
 		this.address = address;
 	}
 
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public Date getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
-	}
 
 	public String getDescription() {
 		return description;
@@ -52,9 +54,12 @@ public class Company implements Serializable {
 		this.description = description;
 	}
 
-	private Date fromDate;
-	
-	private Date toDate;
-	
-	private String description;
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
 }

@@ -17,7 +17,6 @@ public class Experience implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
 	private String title;
 	
 	public String getTitle() {
