@@ -6,12 +6,16 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Admin
  *
  */
+@Table(name="CERTIFICATIONS")
+@Entity
 public class Certifications implements Serializable {
 
 	/**

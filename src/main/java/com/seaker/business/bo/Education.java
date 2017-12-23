@@ -2,10 +2,15 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+
+@Entity
 public class Education implements Serializable {
 	
 	private String name;
 
+	@Embedded
 	private Duration duration;
 	
 	private static final long serialVersionUID = 1L;

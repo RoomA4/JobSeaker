@@ -6,10 +6,13 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Embeddable;
+
 /**
  * @author Admin
  *
  */
+@Embeddable
 public class Duration implements Serializable {
 
 	/**

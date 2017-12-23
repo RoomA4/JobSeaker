@@ -6,19 +6,27 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+
 /**
  * @author Admin
  *
  */
+@Entity
 public class Experience implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String title;
-	
+
+	private List<Company> companies;
+
+	private List<Duration> duration;
+
 	public String getTitle() {
 		return title;
 	}
@@ -42,10 +50,5 @@ public class Experience implements Serializable {
 	public void setDuration(List<Duration> duration) {
 		this.duration = duration;
 	}
-
-	private List<Company> companies;	
-	
-	private List<Duration> duration;
-	
 
 }
