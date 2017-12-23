@@ -2,12 +2,14 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
 @Entity
 public class Education implements Serializable {
 	
+	@Column(name="DEGREE")
 	private String name;
 
 	@Embedded

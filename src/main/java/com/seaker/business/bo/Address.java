@@ -3,8 +3,10 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Id;
 
+@Embeddable
 public class Address implements Serializable {
 	
 	/**

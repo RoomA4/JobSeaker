@@ -6,6 +6,7 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -32,6 +33,7 @@ public class Certifications implements Serializable {
 	@Column(name="CERTIFICATION_AUTHORITY")
 	private String certificationAuthority;
 	
+	@Embedded
 	private Duration durations;
 
 	public String getCertificateName() {

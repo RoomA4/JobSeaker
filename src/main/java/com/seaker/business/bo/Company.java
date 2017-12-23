@@ -8,7 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -25,13 +28,14 @@ public class Company implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="COMPANY_ID")
 	private String companyId;
 	
-	
+	@Embedded
 	private List<Address> address;
 
-	
+	@Embedded
 	private Duration duration;
 	
 	@Column(name="DESCRIPTION")

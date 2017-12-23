@@ -6,11 +6,16 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * @author Admin
  *
  */
+@Table(name="ACHIEVEMENTS")
+@Entity
 public class Achievements implements Serializable {
 
 	/**
@@ -24,7 +29,7 @@ public class Achievements implements Serializable {
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	
+	@Embedded
 	private Duration duration;
 
 	public String getAchievementName() {
