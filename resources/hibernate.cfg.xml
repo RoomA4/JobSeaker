@@ -21,5 +21,10 @@
   <mapping class="com.seaker.business.bo.User"/>
   <mapping class="com.seaker.business.bo.Address"/>
   <mapping class="com.seaker.business.bo.UserProfile"/>
+  <mapping class="com.seaker.business.bo.Experience"/>
+  <mapping class="com.seaker.business.bo.Education"/>
+  <mapping class="com.seaker.business.bo.Certifications"/>
+  <mapping class="com.seaker.business.bo.Achievements"/>
+  
 </session-factory>
 </hibernate-configuration>

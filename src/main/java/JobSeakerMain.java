@@ -4,7 +4,12 @@ import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.seaker.business.bo.Achievements;
+import com.seaker.business.bo.Certifications;
+import com.seaker.business.bo.Duration;
+import com.seaker.business.bo.Education;
 import com.seaker.business.bo.Employer;
+import com.seaker.business.bo.Experience;
 import com.seaker.business.bo.User;
 import com.seaker.business.bo.UserProfile;
 
@@ -42,12 +47,48 @@ public class JobSeakerMain {
 		profile.setSummary("This is userProfile");
 		profile.setUser(user);
 		
+		//Adding Experience
+		Duration duration = new Duration();
+		duration.setStartDate(new Date());
+		duration.setEndDate(new Date());
+		Experience professionalExp = new Experience();
+		professionalExp.setCompanyName("SABA");
+		professionalExp.setDuration(duration);
+		professionalExp.setDesignation("SOFTWARE ENGINEER");
+		professionalExp.setExperienceId(UUID.randomUUID().toString());
+		professionalExp.setUserProfile(profile);
 		
+		//Adding Education
+		Education education = new Education();
+		education.setDuration(duration);
+		education.setName("HIGH SCHOOL");
+		education.setEducationId(UUID.randomUUID().toString());
+		education.setUserProfile(profile);
+		
+		//Adding Certification
+		
+		Certifications certifiation = new Certifications();
+		certifiation.setCertificateName("OCJP");
+		certifiation.setDuration(duration);
+		certifiation.setCertificationId(UUID.randomUUID().toString());
+		certifiation.setUserProfile(profile);
+		certifiation.setCertificationAuthority("SUN-Certified");
+		
+		//Adding Achievements
+		Achievements achievement = new Achievements();
+		achievement.setAchievementName("Achuevement1");
+		achievement.setDescription("JAVA");
+		achievement.setUserProfile(profile);
+		achievement.setAchievementId(UUID.randomUUID().toString());
 		
 		session.beginTransaction();
 		session.save(employer);
 		session.save(user);
 		session.save(profile);
+		session.save(professionalExp);
+		session.save(education);
+		session.save(certifiation);
+		session.save(achievement);
 		session.getTransaction().commit();
 		session.close();
 		

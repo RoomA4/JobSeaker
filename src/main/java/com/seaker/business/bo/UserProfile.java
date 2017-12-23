@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,7 +55,7 @@ public class UserProfile implements Serializable {
 	}
 	
 	/*@OneToMany
-	private List<Competencies> coreCompetencies;
+	private List<Competencies> coreCompetencies;*/
 	
 	@OneToMany
 	private List<Experience> experiences;
@@ -68,11 +69,8 @@ public class UserProfile implements Serializable {
 	@OneToMany
 	private List<Achievements> achievements;
 	
-	@OneToMany
-	private List<Language> languages; */
-	
-	/*@Column(name="ATTRIBUTES")
-	private DataAttributes attributes ;*/
+	//@Embedded
+	//private DataAttributes attributes ;
 	
 	public User getUser() {
 		return user;
@@ -171,5 +169,45 @@ public class UserProfile implements Serializable {
 	public void setCompensation(double compensation) {
 		Compensation = compensation;
 	}
+
+	public List<Experience> getExperiences() {
+		return experiences;
+	}
+
+	public void setExperiences(List<Experience> experiences) {
+		this.experiences = experiences;
+	}
+
+	public List<Education> getEducation() {
+		return education;
+	}
+
+	public void setEducation(List<Education> education) {
+		this.education = education;
+	}
+
+	public List<Certifications> getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(List<Certifications> certifications) {
+		this.certifications = certifications;
+	}
+
+	public List<Achievements> getAchievements() {
+		return achievements;
+	}
+
+	public void setAchievements(List<Achievements> achievements) {
+		this.achievements = achievements;
+	}
+
+	/*public DataAttributes getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(DataAttributes attributes) {
+		this.attributes = attributes;
+	}*/
 
 }

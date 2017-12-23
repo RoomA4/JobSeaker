@@ -7,15 +7,20 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Admin
  *
  */
+@Table(name="PROFESSIONAL_EXPERIENCE")
 @Entity
 public class Experience implements Serializable {
 
@@ -24,38 +29,61 @@ public class Experience implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Id
+	@Column(name="PRF_EXP_ID")
+	private String ExperienceId;
+
+	@ManyToOne
+	@JoinColumn(name="PROFILE_ID")
+	private UserProfile userProfile;
 
 	@Column(name="DESIGNATION")
 	private String designation;
 
-	@OneToOne
-	private List<Company> companies;
+	@Column(name="COMPANY_NAME")
+	private String companyName;
 	
 	@Embedded
-	private List<Duration> duration;
+	@Temporal(TemporalType.DATE)
+	private Duration duration;
+	
+	public String getExperienceId() {
+		return ExperienceId;
+	}
 
-	public String getTitle() {
+	public void setExperienceId(String experienceId) {
+		ExperienceId = experienceId;
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+
+	public String getDesignation() {
 		return designation;
 	}
 
-	public void setTitle(String title) {
-		this.designation = title;
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
-	public List<Company> getCompanies() {
-		return companies;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setCompanies(List<Company> companies) {
-		this.companies = companies;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
-	public List<Duration> getDuration() {
+	public Duration getDuration() {
 		return duration;
 	}
 
-	public void setDuration(List<Duration> duration) {
+	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
 
