@@ -10,6 +10,7 @@ import java.util.Map;
  * @author Admin
  *
  */
+
 public class DataAttributes {
 	
 	private Map<String,String> attributes = new HashMap<>();

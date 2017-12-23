@@ -49,8 +49,8 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int userId;
+	@Id
+	private String userId;
 
 	@Column(name = "USER_NAME")
 	private String userName;
@@ -82,7 +82,8 @@ public class User implements Serializable {
 
 	@Column(name = "GENDER")
 	private Gender gender;
-/*
+	
+	/*
 	@OneToMany
 	private List<Attachment> attachmentList;
 */
@@ -90,11 +91,11 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration;
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
