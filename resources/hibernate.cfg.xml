@@ -13,6 +13,10 @@
   <property name="show_sql">true</property>
   <property name="hbm2ddl.auto">create</property>
   
+  <!-- It happens during the boot, when Hibernate tries to retrieve some meta information from the database. 
+  If this annoys you, you can disable it: -->
+  <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+  
   <mapping class="com.seaker.business.bo.Employer"/>
   <mapping class="com.seaker.business.bo.User"/>
   <mapping class="com.seaker.business.bo.Address"/>

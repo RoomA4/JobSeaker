@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -24,14 +26,17 @@ public class UserProfile implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private String id;
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int id;
 	
 	@Column(name="USER_SUMMARY")
 	private String summary;
 	
-	@OneToMany
-	private List<Competencies> coreCompetencies;
+	@Column(name="USER_DETAILS_ID")
+	private int userId;	
+	
+	/*@OneToMany
+	private List<Competencies> coreCompetencies;*/
 	
 	@OneToMany
 	private List<Experience> experiences;
@@ -54,6 +59,8 @@ public class UserProfile implements Serializable {
 	@Column(name="COMPENSATION")
 	private double Compensation;
 	
+	//private TechnicalExpertise experties;
+	
 	public String getSummary() {
 		return summary;
 	}
@@ -62,13 +69,13 @@ public class UserProfile implements Serializable {
 		this.summary = summary;
 	}
 
-	public List<Competencies> getCoreCompetencies() {
+	/*public List<Competencies> getCoreCompetencies() {
 		return coreCompetencies;
 	}
 
 	public void setCoreCompetencies(List<Competencies> coreCompetencies) {
 		this.coreCompetencies = coreCompetencies;
-	}
+	}*/
 
 	public List<Experience> getExperiences() {
 		return experiences;
@@ -126,14 +133,21 @@ public class UserProfile implements Serializable {
 		Compensation = compensation;
 	}
 
-	public TechnicalExpertise getExperties() {
+/*	public TechnicalExpertise getExperties() {
 		return experties;
 	}
 
 	public void setExperties(TechnicalExpertise experties) {
 		this.experties = experties;
 	}	
-	private TechnicalExpertise experties;
+*/	
 	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 }
