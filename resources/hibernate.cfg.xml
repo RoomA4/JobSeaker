@@ -25,6 +25,7 @@
   <mapping class="com.seaker.business.bo.Education"/>
   <mapping class="com.seaker.business.bo.Certifications"/>
   <mapping class="com.seaker.business.bo.Achievements"/>
+  <mapping class="com.seaker.business.bo.Jobs"/>
   
 </session-factory>
 </hibernate-configuration>

@@ -12,7 +12,7 @@ import java.util.Arrays;
 public enum Role {
 
 	
-	JOBSEAKER(1),EMPLOYER(2),AGENCY(3),INSTITUTION(4),ADMIN(5);
+	JOBSEAKER(0),EMPLOYER(1),ADMIN(2);
 	
 	private int code;
 	

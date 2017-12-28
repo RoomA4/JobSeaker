@@ -4,23 +4,17 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+import com.seaker.business.constant.UserType;
 
 /**
  * @author Admin
@@ -31,7 +25,7 @@ import org.hibernate.annotations.NotFoundAction;
 public class User implements Serializable {
 
 	/**
-	 * 
+	 * User Basic profile object.
 	 */
 	public enum Gender{
 		MALE(1),FEMALE(2);
@@ -42,9 +36,9 @@ public class User implements Serializable {
 			this.code = code;
 		}
 		
-		/*public Gender getGender(int code) {
+		public Gender getGender(int code) {
 			return Arrays.stream(Gender.values()).filter(e->e.code==code).findFirst().get();
-		}*/
+		}
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -54,9 +48,12 @@ public class User implements Serializable {
 
 	@Column(name = "USER_NAME")
 	private String userName;
+	
+	@Column(name="USER_TYPE")
+	private UserType userType;
 
-	/*@Column(name = "USER_ROLE")
-	private com.seaker.business.constant.Role role;*/
+	@Column(name = "USER_ROLE")
+	private com.seaker.business.constant.Role role;
 
 	/*@OneToMany
 	private List<Address> addressList;*/
@@ -114,15 +111,6 @@ public class User implements Serializable {
 	public void setRole(com.seaker.business.constant.Role role) {
 		this.role = role;
 	}*/
-
-	/*public List<Address> getAddressList() {
-		return addressList;
-	}
-
-	public void setAddressList(List<Address> addressList) {
-		this.addressList = addressList;
-	}*/
-
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -154,29 +142,29 @@ public class User implements Serializable {
 	public void setGender(String gender) {
 		this.gender = Gender.valueOf(gender);
 	}
-
-	/*public Address getLocation() {
-		return location;
-	}
-
-	public void setLocation(Address location) {
-		this.location = location;
-	}
-*/
-	/*public List<Attachment> getAttachmentList() {
-		return attachmentList;
-	}
-
-	public void setAttachmentList(List<Attachment> attachmentList) {
-		this.attachmentList = attachmentList;
-	}
-*/
+	
 	public Date getDateOfRegistration() {
 		return dateOfRegistration;
 	}
 
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
+	}
+	
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	public com.seaker.business.constant.Role getRole() {
+		return role;
+	}
+
+	public void setRole(com.seaker.business.constant.Role role) {
+		this.role = role;
 	}
 
 }

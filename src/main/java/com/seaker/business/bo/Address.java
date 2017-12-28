@@ -14,8 +14,8 @@ public class Address implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private String addressId;
+	@Column(name="HOUSE_NUMBER")
+	private String houseNumber;
 	
 	@Column(name="STREET_NUMBERS")
 	private String streetNumber;
@@ -32,12 +32,6 @@ public class Address implements Serializable {
 	@Column(name="PINCODE")
 	private double pincode;
 	
-	public String getAddressId() {
-		return addressId;
-	}
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
-	}
 	public String getStreetNu() {
 		return streetNumber;
 	}
