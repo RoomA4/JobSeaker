@@ -1,12 +1,16 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Embeddable
+@Entity
+@Table(name="ADDRESS")
 public class Address implements Serializable {
 	
 	/**
@@ -14,8 +18,15 @@ public class Address implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="HOUSE_NUMBER")
-	private String houseNumber;
+	@Id
+	private String addressId;
+	
+	public Address() {
+		this.addressId = UUID.randomUUID().toString();
+	}
+	
+	@Embedded
+	private StatefullEntity userid;
 	
 	@Column(name="STREET_NUMBERS")
 	private String streetNumber;
@@ -32,6 +43,12 @@ public class Address implements Serializable {
 	@Column(name="PINCODE")
 	private double pincode;
 	
+	public String getAddressId() {
+		return addressId;
+	}
+	public void setAddressId(String addressId) {
+		this.addressId = addressId;
+	}
 	public String getStreetNu() {
 		return streetNumber;
 	}
@@ -61,6 +78,18 @@ public class Address implements Serializable {
 	}
 	public void setPincode(double pincode) {
 		this.pincode = pincode;
+	}
+	public StatefullEntity getUserid() {
+		return userid;
+	}
+	public void setUserid(StatefullEntity userid) {
+		this.userid = userid;
+	}
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
 	}
 	
 

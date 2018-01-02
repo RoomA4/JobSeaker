@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.seaker.business.constant.UserType;
-
 /**
  * @author Admin
  *
@@ -49,8 +47,8 @@ public class User implements Serializable {
 	@Column(name = "USER_NAME")
 	private String userName;
 	
-	@Column(name="USER_TYPE")
-	private UserType userType;
+	/*@Column(name="USER_TYPE")
+	private UserType userType;*/
 
 	@Column(name = "USER_ROLE")
 	private com.seaker.business.constant.Role role;
@@ -151,13 +149,13 @@ public class User implements Serializable {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 	
-	public UserType getUserType() {
+/*	public UserType getUserType() {
 		return userType;
 	}
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
-	}
+	}*/
 
 	public com.seaker.business.constant.Role getRole() {
 		return role;

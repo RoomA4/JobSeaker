@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import com.seaker.business.constant.EmployerType;
 /**
@@ -17,7 +21,7 @@ import com.seaker.business.constant.EmployerType;
  */
 
 @Entity
-@Table(name="EMPLOYER")
+@Table
 public class Employer implements Serializable {
 
 	
@@ -26,8 +30,9 @@ public class Employer implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private String employerId;
+	
+	@EmbeddedId
+	private StatefullEntity id;
 	
 	@Column(name="EMPLOYER_TYPE")
 	private EmployerType employerType;
@@ -44,9 +49,10 @@ public class Employer implements Serializable {
 	@Column(name="EMPLOYER_PHONE")
 	private String phoneNumber;
 	
-	/*@OneToMany
+	@OneToMany(mappedBy="userid", cascade = CascadeType.ALL)
+	@NotFound(action=NotFoundAction.IGNORE)
 	private List<Address> branchLocaltion = new ArrayList<>();
-	*/
+	
 	@Column(name="COMPANY_STRENGTH")
 	private String employeeStrength;
 	
@@ -55,16 +61,10 @@ public class Employer implements Serializable {
 	
 	@Column(name="NO_OF_YEARS")
 	private double noOfYearInBusiness;
-	/*
-	@OneToMany(mappedBy="attachementId")
-	private List<Attachment> attachments;
-	*/
-	public String getEmployerId() {
-		return employerId;
-	}
-	public void setEmployerId(String employerId) {
-		this.employerId = employerId;
-	}
+	
+	@OneToMany(mappedBy="userId")
+	private List<Attachment> attachments = new ArrayList<>();
+	
 	public EmployerType getEmployerType() {
 		return employerType;
 	}
@@ -113,17 +113,25 @@ public class Employer implements Serializable {
 	public void setNoOfYearInBusiness(double noOfYearInBusiness) {
 		this.noOfYearInBusiness = noOfYearInBusiness;
 	}
-	/*public List<Attachment> getAttachments() {
+	public List<Attachment> getAttachments() {
 		return attachments;
 	}
 	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
-	}*/
-	/*public List<Address> getBranchLocaltion() {
+	}
+	public List<Address> getBranchLocaltion() {
 		return branchLocaltion;
 	}
 	public void setBranchLocaltion(List<Address> branchLocaltion) {
 		this.branchLocaltion = branchLocaltion;
-	}*/
+	}
+	public StatefullEntity getId() {
+		return id;
+	}
+	public void setId(StatefullEntity id) {
+		this.id = id;
+	}
+	
+	
 	
 }

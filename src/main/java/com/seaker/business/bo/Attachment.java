@@ -7,7 +7,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 import com.seaker.business.constant.AttachmentType;
 
@@ -15,6 +19,8 @@ import com.seaker.business.constant.AttachmentType;
  * @author Admin
  *
  */
+@Entity
+@Table
 public class Attachment implements Serializable {
 
 	
@@ -24,6 +30,10 @@ public class Attachment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String attachementId;
+
+	@Embedded
+	@JoinColumn(name="attachementId",insertable=false)
+	private StatefullEntity userId;
 	
 	@Column(name="ATTACHMENT_NAME")
 	private String attachmentName;
@@ -79,6 +89,12 @@ public class Attachment implements Serializable {
 	}
 	public void setAttachmentDesc(String attachmentDesc) {
 		this.attachmentDesc = attachmentDesc;
+	}
+	public StatefullEntity getUserId() {
+		return userId;
+	}
+	public void setUserId(StatefullEntity userId) {
+		this.userId = userId;
 	}
 	
 
