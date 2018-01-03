@@ -5,6 +5,7 @@ package com.seaker.business.bo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -30,6 +31,13 @@ public class Attachment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String attachementId;
+	//setting the attachmentId
+	 public Attachment() {
+		 
+		 this.attachementId = UUID.randomUUID().toString();
+	 }
+	 
+	
 
 	@Embedded
 	@JoinColumn(name="attachementId",insertable=false)

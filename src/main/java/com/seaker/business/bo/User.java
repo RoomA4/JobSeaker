@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,8 +41,11 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private String userId;
+	
+	
+	@EmbeddedId
+	private StatefullEntity userId;
+	
 
 	@Column(name = "USER_NAME")
 	private String userName;
@@ -86,11 +89,13 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration;
 
-	public String getUserId() {
+	
+
+	public StatefullEntity getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(StatefullEntity userId) {
 		this.userId = userId;
 	}
 
