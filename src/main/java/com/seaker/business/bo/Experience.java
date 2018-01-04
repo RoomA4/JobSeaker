@@ -4,7 +4,6 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -31,10 +30,10 @@ public class Experience implements Serializable {
 	
 	@Id
 	@Column(name="PRF_EXP_ID")
-	private String ExperienceId;
+	private String exprienceId;
 
 	@ManyToOne
-	@JoinColumn(name="PROFILE_ID")
+	@JoinColumn(name="profileId", nullable=false)
 	private UserProfile userProfile;
 
 	@Column(name="DESIGNATION")
@@ -48,19 +47,11 @@ public class Experience implements Serializable {
 	private Duration duration;
 	
 	public String getExperienceId() {
-		return ExperienceId;
+		return exprienceId;
 	}
 
 	public void setExperienceId(String experienceId) {
-		ExperienceId = experienceId;
-	}
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
+		exprienceId = experienceId;
 	}
 
 	public String getDesignation() {
@@ -86,5 +77,22 @@ public class Experience implements Serializable {
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
+
+	public String getExprienceId() {
+		return exprienceId;
+	}
+
+	public void setExprienceId(String exprienceId) {
+		this.exprienceId = exprienceId;
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+	
 
 }

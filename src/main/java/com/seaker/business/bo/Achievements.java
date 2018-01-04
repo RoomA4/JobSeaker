@@ -6,7 +6,6 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,7 +32,7 @@ public class Achievements implements Serializable {
 	private String achievementId;
 	
 	@ManyToOne
-	@JoinColumn(name="PROFILE_ID")
+	@JoinColumn(name="profileId", nullable=false)
 	private UserProfile userProfile;
 	
 	@Column(name="ACHIEVEMENT_NAME")
@@ -58,6 +57,7 @@ public class Achievements implements Serializable {
 		this.description = description;
 	}
 
+	
 	public UserProfile getUserProfile() {
 		return userProfile;
 	}

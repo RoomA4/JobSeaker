@@ -22,7 +22,7 @@ public class Education implements Serializable {
 	private String educationId;
 	
 	@ManyToOne
-	@JoinColumn(name="PROFILE_ID")
+	@JoinColumn(name="profileId", nullable=false)
 	private UserProfile userProfile;
 	
 	@Column(name="DEGREE_NAME")
@@ -65,5 +65,4 @@ public class Education implements Serializable {
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
-
 }

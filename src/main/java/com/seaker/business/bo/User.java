@@ -4,21 +4,29 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  * @author Admin
  *
  */
-@Table(name = "USER_BASIC_DETAILS")
+@Table(name = "USER_DETAILS")
 @Entity
 public class User implements Serializable {
 
@@ -44,33 +52,33 @@ public class User implements Serializable {
 	
 	
 	@EmbeddedId
-	private StatefullEntity userId;
+	private StateFullEntity id;
+	
+	public User() {
+		this.id = new StateFullEntity(UUID.randomUUID().toString());
+		}
+	
+	public User(String userId) {
+		this.id = new StateFullEntity(userId);
+		}
 	
 
 	@Column(name = "USER_NAME")
 	private String userName;
 	
-	/*@Column(name="USER_TYPE")
-	private UserType userType;*/
-
 	@Column(name = "USER_ROLE")
 	private com.seaker.business.constant.Role role;
 
-	/*@OneToMany
-	private List<Address> addressList;*/
+	@OneToMany(mappedBy="id" ,cascade = CascadeType.ALL)
+	private List<Address> addressList = new ArrayList<>();
 
 	@Column(name = "USER_EMAIL")
 	private String emailAddress;
 	
-	/*
-	@OneToMany
+	
+	@OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
 	@NotFound(action=NotFoundAction.IGNORE)
 	private List<UserProfile> profiles = new ArrayList<>();
-*/
-	// todo -- Need to check the feasibility of using this --already having address
-	// field
-	/*@OneToOne
-	private Address location;*/
 
 	@Column(name = "USER_SNS")
 	private String SocialNetworkSignature;
@@ -81,22 +89,23 @@ public class User implements Serializable {
 	@Column(name = "GENDER")
 	private Gender gender;
 	
-	/*
-	@OneToMany
-	private List<Attachment> attachmentList;
-*/
+	
+	@OneToMany(mappedBy="userId" , cascade= CascadeType.ALL)
+	@NotFound(action=NotFoundAction.IGNORE)
+	private List<Attachment> attachmentList = new ArrayList<>();
+
 	@Column(name = "REGISTRATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration;
 
-	
 
-	public StatefullEntity getUserId() {
-		return userId;
+
+	public StateFullEntity getId() {
+		return id;
 	}
 
-	public void setUserId(StatefullEntity userId) {
-		this.userId = userId;
+	public void setId(StateFullEntity id) {
+		this.id = id;
 	}
 
 	public String getUserName() {
@@ -107,13 +116,6 @@ public class User implements Serializable {
 		this.userName = userName;
 	}
 
-	/*public com.seaker.business.constant.Role getRole() {
-		return role;
-	}
-
-	public void setRole(com.seaker.business.constant.Role role) {
-		this.role = role;
-	}*/
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -154,14 +156,6 @@ public class User implements Serializable {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 	
-/*	public UserType getUserType() {
-		return userType;
-	}
-
-	public void setUserType(UserType userType) {
-		this.userType = userType;
-	}*/
-
 	public com.seaker.business.constant.Role getRole() {
 		return role;
 	}

@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +26,9 @@ public class Address implements Serializable {
 	public Address() {
 		this.addressId = UUID.randomUUID().toString();
 	}
-	
+
 	@Embedded
-	private StatefullEntity userid;
+	private StateFullEntity id;
 	
 	@Column(name="STREET_NUMBERS")
 	private String streetNumber;
@@ -79,18 +81,19 @@ public class Address implements Serializable {
 	public void setPincode(double pincode) {
 		this.pincode = pincode;
 	}
-	public StatefullEntity getUserid() {
-		return userid;
-	}
-	public void setUserid(StatefullEntity userid) {
-		this.userid = userid;
-	}
 	public String getStreetNumber() {
 		return streetNumber;
 	}
 	public void setStreetNumber(String streetNumber) {
 		this.streetNumber = streetNumber;
 	}
+	public StateFullEntity getId() {
+		return id;
+	}
+	public void setId(StateFullEntity id) {
+		this.id = id;
+	}
+	
 	
 
 }

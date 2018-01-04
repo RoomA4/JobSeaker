@@ -33,7 +33,7 @@ public class Certifications implements Serializable {
 	private String certificationId;
 	
 	@ManyToOne
-	@JoinColumn(name="PROFILE_ID")
+	@JoinColumn(name="profileId", nullable =false)
 	private UserProfile userProfile;
 
 	@Column(name="CERTIFICATION_NAME")
@@ -85,4 +85,7 @@ public class Certifications implements Serializable {
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
+
+	
+	
 }

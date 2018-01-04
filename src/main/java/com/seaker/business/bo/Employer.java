@@ -32,7 +32,7 @@ public class Employer implements Serializable {
 	
 	
 	@EmbeddedId
-	private StatefullEntity id;
+	private StateFullEntity id;
 	
 	@Column(name="EMPLOYER_TYPE")
 	private EmployerType employerType;
@@ -49,7 +49,7 @@ public class Employer implements Serializable {
 	@Column(name="EMPLOYER_PHONE")
 	private String phoneNumber;
 	
-	@OneToMany(mappedBy="userid", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="id", cascade = CascadeType.ALL)
 	@NotFound(action=NotFoundAction.IGNORE)
 	private List<Address> branchLocaltion = new ArrayList<>();
 	
@@ -125,10 +125,10 @@ public class Employer implements Serializable {
 	public void setBranchLocaltion(List<Address> branchLocaltion) {
 		this.branchLocaltion = branchLocaltion;
 	}
-	public StatefullEntity getId() {
+	public StateFullEntity getId() {
 		return id;
 	}
-	public void setId(StatefullEntity id) {
+	public void setId(StateFullEntity id) {
 		this.id = id;
 	}
 	

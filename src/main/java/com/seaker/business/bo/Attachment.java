@@ -40,8 +40,7 @@ public class Attachment implements Serializable {
 	
 
 	@Embedded
-	@JoinColumn(name="attachementId",insertable=false)
-	private StatefullEntity userId;
+	private StateFullEntity userId;
 	
 	@Column(name="ATTACHMENT_NAME")
 	private String attachmentName;
@@ -98,10 +97,10 @@ public class Attachment implements Serializable {
 	public void setAttachmentDesc(String attachmentDesc) {
 		this.attachmentDesc = attachmentDesc;
 	}
-	public StatefullEntity getUserId() {
+	public StateFullEntity getUserId() {
 		return userId;
 	}
-	public void setUserId(StatefullEntity userId) {
+	public void setUserId(StateFullEntity userId) {
 		this.userId = userId;
 	}
 	

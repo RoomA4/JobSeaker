@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class StatefullEntity implements Serializable{
+public class StateFullEntity implements Serializable{
 	
 	/**
 	 * 
@@ -13,12 +13,12 @@ public class StatefullEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String id;
 	
-	public StatefullEntity()
+	public StateFullEntity()
 	{
 		// Default cons ...
 	}
 	
-	public StatefullEntity(String id) {
+	public StateFullEntity(String id) {
 		this.id = id;
 	}
 

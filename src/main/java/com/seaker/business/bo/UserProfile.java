@@ -4,21 +4,18 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.seaker.business.constant.TechnicalExpertise;
-import com.searker.business.attributes.DataAttributes;
 
 /**
  * @author Admin
@@ -28,58 +25,41 @@ import com.searker.business.attributes.DataAttributes;
 @Entity
 public class UserProfile implements Serializable {
 	
-	
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="PROFILE_ID")
-	private String userProfileId;
+	private String profileId;
+	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="id")
+	private User user;
 	
 	@Column(name="USER_SUMMARY")
 	private String summary;
 	
-	@OneToOne
-	@JoinColumn(name="userId")
-	private User user;
-	
 	public String getUserProfileId() {
-		return userProfileId;
+		return profileId;
 	}
 
 	public void setUserProfileId(String userProfileId) {
-		this.userProfileId = userProfileId;
+		this.profileId = userProfileId;
 	}
 	
-	/*@OneToMany
-	private List<Competencies> coreCompetencies;*/
+	@OneToMany(mappedBy="userProfile",cascade=CascadeType.ALL)
+	private List<Experience> experiences = new ArrayList<>();
 	
-	@OneToMany
-	private List<Experience> experiences;
+	@OneToMany(mappedBy="userProfile",cascade=CascadeType.ALL)
+	private List<Education> education  = new ArrayList<>();
 	
-	@OneToMany
-	private List<Education> education;
+	@OneToMany(mappedBy="userProfile",cascade=CascadeType.ALL)
+	private List<Certifications> certifications  = new ArrayList<>();
 	
-	@OneToMany
-	private List<Certifications> certifications;
+	@OneToMany(mappedBy="userProfile",cascade=CascadeType.ALL)
+	private List<Achievements> achievements  = new ArrayList<>();
 	
-	@OneToMany
-	private List<Achievements> achievements;
-	
-	//@Embedded
-	//private DataAttributes attributes ;
-	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	@Column(name="COMPENSATION")
 	private double Compensation;
 	
@@ -90,9 +70,7 @@ public class UserProfile implements Serializable {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-
 	
-	//private TechnicalExpertise experties;
 	public double getCompensation() {
 		return Compensation;
 	}
@@ -133,12 +111,24 @@ public class UserProfile implements Serializable {
 		this.achievements = achievements;
 	}
 
-	/*public DataAttributes getAttributes() {
-		return attributes;
+	public String getProfileId() {
+		return profileId;
 	}
 
-	public void setAttributes(DataAttributes attributes) {
-		this.attributes = attributes;
-	}*/
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
+
+
 
 }
