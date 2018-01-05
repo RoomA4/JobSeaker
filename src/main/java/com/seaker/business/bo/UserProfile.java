@@ -33,7 +33,7 @@ public class UserProfile implements Serializable {
 	@Id
 	private String profileId;
 	
-	@ManyToOne(cascade=CascadeType.MERGE)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
 	private User user;
 	

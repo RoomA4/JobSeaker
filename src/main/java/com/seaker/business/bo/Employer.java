@@ -62,7 +62,7 @@ public class Employer implements Serializable {
 	@Column(name="NO_OF_YEARS")
 	private double noOfYearInBusiness;
 	
-	@OneToMany(mappedBy="userId",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="id",cascade = CascadeType.ALL)
 	private List<Attachment> attachments = new ArrayList<>();
 	
 	public EmployerType getEmployerType() {

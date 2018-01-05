@@ -40,7 +40,7 @@ public class Attachment implements Serializable {
 	
 
 	@Embedded
-	private StateFullEntity userId;
+	private StateFullEntity id;
 	
 	@Column(name="ATTACHMENT_NAME")
 	private String attachmentName;
@@ -97,12 +97,13 @@ public class Attachment implements Serializable {
 	public void setAttachmentDesc(String attachmentDesc) {
 		this.attachmentDesc = attachmentDesc;
 	}
-	public StateFullEntity getUserId() {
-		return userId;
+	public StateFullEntity getId() {
+		return id;
 	}
-	public void setUserId(StateFullEntity userId) {
-		this.userId = userId;
+	public void setId(StateFullEntity id) {
+		this.id = id;
 	}
+	
 	
 
 }

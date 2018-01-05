@@ -90,7 +90,7 @@ public class User implements Serializable {
 	private Gender gender;
 	
 	
-	@OneToMany(mappedBy="userId" , cascade= CascadeType.ALL)
+	@OneToMany(mappedBy="id" , cascade= CascadeType.ALL)
 	@NotFound(action=NotFoundAction.IGNORE)
 	private List<Attachment> attachmentList = new ArrayList<>();
 
@@ -163,5 +163,39 @@ public class User implements Serializable {
 	public void setRole(com.seaker.business.constant.Role role) {
 		this.role = role;
 	}
+
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+
+	public void setAddressList(List<Address> addressList) {
+		this.addressList = addressList;
+	}
+
+	public List<UserProfile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(List<UserProfile> profiles) {
+		this.profiles = profiles;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public List<Attachment> getAttachmentList() {
+		return attachmentList;
+	}
+
+	public void setAttachmentList(List<Attachment> attachmentList) {
+		this.attachmentList = attachmentList;
+	}
+	
+	
 
 }
