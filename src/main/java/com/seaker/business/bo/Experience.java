@@ -4,6 +4,7 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -31,6 +32,10 @@ public class Experience implements Serializable {
 	@Id
 	@Column(name="PRF_EXP_ID")
 	private String exprienceId;
+	
+	public Experience() {
+		this.exprienceId= UUID.randomUUID().toString();
+	}
 
 	@ManyToOne
 	@JoinColumn(name="profileId", nullable=false)

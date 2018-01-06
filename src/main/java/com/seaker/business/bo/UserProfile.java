@@ -6,10 +6,10 @@ package com.seaker.business.bo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,9 +33,14 @@ public class UserProfile implements Serializable {
 	@Id
 	private String profileId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	public UserProfile() {
+		this.profileId = UUID.randomUUID().toString();
+	}
+	
+	
+	@ManyToOne
 	@JoinColumn(name="id")
-	private User user;
+	private StateFullEntity user;
 	
 	@Column(name="USER_SUMMARY")
 	private String summary;
@@ -119,13 +124,14 @@ public class UserProfile implements Serializable {
 		this.profileId = profileId;
 	}
 
-	public User getUser() {
+	public StateFullEntity getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(StateFullEntity user) {
 		this.user = user;
 	}
+
 
 	
 

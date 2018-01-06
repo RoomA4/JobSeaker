@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.seaker.business.constant.AttachmentType;
@@ -36,12 +36,10 @@ public class Attachment implements Serializable {
 		 
 		 this.attachementId = UUID.randomUUID().toString();
 	 }
-	 
-	
+	 @ManyToOne
+	 @JoinColumn(name="ID")
+	 private StateFullEntity id;
 
-	@Embedded
-	private StateFullEntity id;
-	
 	@Column(name="ATTACHMENT_NAME")
 	private String attachmentName;
 	
@@ -97,13 +95,5 @@ public class Attachment implements Serializable {
 	public void setAttachmentDesc(String attachmentDesc) {
 		this.attachmentDesc = attachmentDesc;
 	}
-	public StateFullEntity getId() {
-		return id;
-	}
-	public void setId(StateFullEntity id) {
-		this.id = id;
-	}
-	
-	
 
 }

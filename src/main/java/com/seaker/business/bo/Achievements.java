@@ -4,6 +4,7 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +31,11 @@ public class Achievements implements Serializable {
 	@Id
 	@Column(name="ACHIEVEMENT_ID")
 	private String achievementId;
+	
+	public Achievements() {
+		this.achievementId = UUID.randomUUID().toString();
+	
+	}
 	
 	@ManyToOne
 	@JoinColumn(name="profileId", nullable=false)

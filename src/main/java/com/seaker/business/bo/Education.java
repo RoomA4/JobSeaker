@@ -1,6 +1,7 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -20,6 +21,10 @@ public class Education implements Serializable {
 	@Id
 	@Column(name="EDU_ID")
 	private String educationId;
+	public Education() {
+		this.educationId = UUID.randomUUID().toString();
+	
+	}
 	
 	@ManyToOne
 	@JoinColumn(name="profileId", nullable=false)

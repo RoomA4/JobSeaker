@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +26,8 @@ public class Address implements Serializable {
 		this.addressId = UUID.randomUUID().toString();
 	}
 
-	@Embedded
+	@ManyToOne
+	@JoinColumn(name="id")
 	private StateFullEntity id;
 	
 	@Column(name="STREET_NUMBERS")
