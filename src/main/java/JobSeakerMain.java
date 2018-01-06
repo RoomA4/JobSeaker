@@ -17,31 +17,37 @@ public class JobSeakerMain {
 		//Test Employer
 		Employer employer = new Employer();
 		employer.setId(UUID.randomUUID().toString());;
-		employer.setName("prakash");
+		employer.setName("afkajb");
 		employer.setEmailAddress("abc.gmai.com");
 		
 		Attachment attachment = new Attachment();
-		attachment.setAttachmentName("Prakash Test");
+		attachment.setAttachmentName("A Test");
+		attachment.setId(employer);
 		Attachment attachment2 = new Attachment();
-		attachment2.setAttachmentName("Prakash Test");
+		attachment2.setAttachmentName("B Test");
+		attachment2.setId(employer);
 
 		employer.getAttachments().add(attachment);
 		employer.getAttachments().add(attachment2);
 
-		session.saveOrUpdate(employer);		
+		
 		
 		User user = new User();
 		user.setId(UUID.randomUUID().toString());
+		user.setUserName("Prkaahs");
 		
 		Attachment attachment3 = new Attachment();
-		attachment.setAttachmentName("Prakash Test");
+		attachment3.setAttachmentName("kak Test");
+		attachment3.setId(user);
 		Attachment attachment4 = new Attachment();
-		attachment2.setAttachmentName("Prakash Test");
+		attachment4.setAttachmentName("fk Test");
+		attachment4.setId(user);
 		
 		user.getAttachments().add(attachment3);
 		user.getAttachments().add(attachment4);
 		
-		session.saveOrUpdate(user);
+		session.save(user);
+		session.save(employer);		
 		
 		session.getTransaction().commit();
 		session.close();

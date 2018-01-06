@@ -15,7 +15,7 @@ import com.seaker.business.constant.EmployerType;
  */
 
 @Entity
-@Table
+@Table(name="EMPLOYER")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employer extends StateFullEntity implements Serializable {
 

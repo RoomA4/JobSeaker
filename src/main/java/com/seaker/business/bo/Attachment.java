@@ -95,5 +95,13 @@ public class Attachment implements Serializable {
 	public void setAttachmentDesc(String attachmentDesc) {
 		this.attachmentDesc = attachmentDesc;
 	}
+	public StateFullEntity getId() {
+		return id;
+	}
+	public void setId(StateFullEntity id) {
+		this.id = id;
+	}
+	
+	
 
 }

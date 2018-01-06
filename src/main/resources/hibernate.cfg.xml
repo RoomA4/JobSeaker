@@ -17,8 +17,10 @@
   If this annoys you, you can disable it: -->
   <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
   
-  <mapping class="com.seaker.business.bo.Employer"/>
+    <mapping class="com.seaker.business.bo.StateFullEntity"/>
   <mapping class="com.seaker.business.bo.User"/>
+  <mapping class="com.seaker.business.bo.Employer"/>
+  <mapping class="com.seaker.business.bo.Attachment"/>
   <mapping class="com.seaker.business.bo.Address"/>
   <mapping class="com.seaker.business.bo.UserProfile"/>
   <mapping class="com.seaker.business.bo.Experience"/>
