@@ -14,6 +14,37 @@
 			
 			<context:annotation-config/>
 			<mvc:annotation-driven/>
-			
 			<context:component-scan base-package="com.seaker.business.controller"></context:component-scan>
+			
+			<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+				<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+				<property name="username" value="jobseaker" />
+				<property name="password" value="jobseaker" />
+				<property name="show_sql" value="true"/>
+  				<property name="hbm2ddl.auto"  value="create"/>
+			</bean>
+			
+			<bean id="userDao" class="com.seaker.business.dao.impl.UserDaoImpl">
+					<property name="dataSource" ref="dataSource"></property>
+			
+			</bean>
+			
+			<!-- Hibernate 3 Annotation SessionFactory Bean definition-->
+			<bean id="sessionFactory"
+				class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+				<property name="dataSource" ref="dataSource" />
+				<property name="packagesToScan" value="com.seaker.business.bo"/>
+				<property name="hibernateProperties">
+					<props>
+						<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+						<prop key="hibernate.current_session_context_class">thread</prop>
+						<prop key="hibernate.show_sql">true</prop>
+						<prop key="hbm2ddl.auto">true</prop>
+					</props>
+				</property>
+			</bean>
+			
+			
+			
 </beans>
