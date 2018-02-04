@@ -5,6 +5,8 @@ package com.seaker.business.dao.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import com.seaker.business.dao.UserDao;
 @Repository
 public class UserDaoImpl implements UserDao{
 	
+	
+	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -30,6 +34,8 @@ public class UserDaoImpl implements UserDao{
 		session.save(user);
 		session.getTransaction().commit();
 		return true;
+		
+		/*compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0'*/
 	}
 
 	@Override

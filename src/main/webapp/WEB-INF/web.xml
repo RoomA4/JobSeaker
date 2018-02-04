@@ -6,9 +6,9 @@
 		<welcome-file>snoop.jsp</welcome-file>
 	</welcome-file-list>
 
-	<listener>
+	<!-- <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	</listener> -->
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>

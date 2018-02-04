@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Admin
@@ -22,10 +24,12 @@ public class Duration implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="START_DATE")
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	
 	
 	@Column(name="END_DATE")
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	public Date getStartDate() {
