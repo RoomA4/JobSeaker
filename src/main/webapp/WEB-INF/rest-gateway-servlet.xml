@@ -18,17 +18,19 @@
 			
 			<bean id="userService" class="com.seaker.business.service.impl.UserServiceImpl"/>
 			
-		
-			<bean id="userDao" class="com.seaker.business.dao.impl.UserDaoImpl">
-					<!-- <property name="dataSource" ref="dataSource"></property> -->
-			
+			<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+				<property name="location">
+					<value>classpath:database.properties</value>
+				</property>
 			</bean>
 			
+			<bean id="userDao" class="com.seaker.business.dao.impl.UserDaoImpl"/>
+			
 			<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-				<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
-				<property name="username" value="jobseaker" />
-				<property name="password" value="jobseaker" />
+				<property name="driverClassName" value="${hibernate.connection.driver_class}" />
+				<property name="url" value="${hibernate.connection.url}" />
+				<property name="username" value="${hibernate.connection.username}" />
+				<property name="password" value="${hibernate.connection.password}" />
 			</bean>
 			
 			<!-- Hibernate 3 Annotation SessionFactory Bean definition-->
@@ -38,14 +40,12 @@
 				<property name="packagesToScan" value="com.seaker.business.bo"/>
 				<property name="hibernateProperties">
 					<props>
-						<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-						<prop key="hibernate.current_session_context_class">thread</prop>
-						<prop key="hibernate.show_sql">true</prop>
-						<prop key="hbm2ddl.auto">create</prop>
+						<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+						<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+						<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 					</props>
 				</property>
 			</bean>
-			
 			<tx:annotation-driven transaction-manager="transactionManager"/> 
 			
 			<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

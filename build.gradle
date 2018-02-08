@@ -22,13 +22,20 @@ dependencies {
 	    compile 'org.springframework:spring-webmvc:4.2.0.RELEASE'
 	   	compile 'org.springframework:spring-web:4.2.0.RELEASE'
 	   	compile 'org.springframework:spring-core:4.2.0.RELEASE'
+	   	compile 'org.springframework:spring-context:4.2.0.RELEASE'
 	   	compile 'org.springframework.security:spring-security-web:4.2.0.RELEASE'
 	   	compile 'org.springframework.security:spring-security-config:4.2.0.RELEASE'
+	   	compile 'org.hsqldb:hsqldb:2.2.8'
+	   	
 	   	compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+	   	
 	   	compile 'org.hibernate:hibernate-core:4.2.21.Final'
 	   	compile 'org.hibernate:hibernate-entitymanager:4.2.21.Final'
+	   	
 	   	compile group: 'org.springframework', name: 'spring-orm', version: '4.2.0.RELEASE'
 	   	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.2.0.RELEASE'
+	   	
+	   	
 	   	compile 'taglibs:standard:1.1.2'
 	   	compile 'javax.servlet:jstl:1.1.2'
 	   	compile 'log4j:log4j:1.2.17'

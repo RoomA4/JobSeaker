@@ -65,8 +65,8 @@ public class User extends StateFullEntity implements Serializable {
 	@Column(name = "USER_NAME")
 	private String userName;
 	
-	/*@Column(name = "USER_ROLE")
-	private com.seaker.business.constant.Role role;*/
+	@Column(name = "USER_ROLE")
+	private com.seaker.business.constant.Role role;
 
 	@Column(name = "USER_EMAIL")
 	private String emailAddress;
@@ -82,8 +82,8 @@ public class User extends StateFullEntity implements Serializable {
 	@Column(name = "MOBILE_NUMBER")
 	private String mobileNumber;
 
-	/*@Column(name = "GENDER")
-	private Gender gender;*/
+	@Column(name = "GENDER")
+	private Gender gender;
 	
 	@Column(name = "REGISTRATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -120,14 +120,13 @@ public class User extends StateFullEntity implements Serializable {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
-	/*public String getGender(String code) {
+	public String getGender(String code) {
 		return Gender.valueOf(code).toString();
 	}
 	
 	public void setGender(String gender) {
 		this.gender = Gender.valueOf(gender);
-	}*/
+	}
 	
 	public Date getDateOfRegistration() {
 		return dateOfRegistration;
@@ -136,7 +135,8 @@ public class User extends StateFullEntity implements Serializable {
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
 	}
-	/*@Enumerated(EnumType.ORDINAL)
+	
+	@Enumerated(EnumType.ORDINAL)
 	public com.seaker.business.constant.Role getRole() {
 		return role;
 	}
@@ -144,7 +144,7 @@ public class User extends StateFullEntity implements Serializable {
 	public void setRole(com.seaker.business.constant.Role role) {
 		this.role = role;
 	}
-*/
+
 	public List<UserProfile> getProfiles() {
 		return profiles;
 	}
@@ -153,12 +153,12 @@ public class User extends StateFullEntity implements Serializable {
 		this.profiles = profiles;
 	}
 
-	/*@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.ORDINAL)
 	public Gender getGender() {
 		return gender;
 	}
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
-	}*/
+	}
 }

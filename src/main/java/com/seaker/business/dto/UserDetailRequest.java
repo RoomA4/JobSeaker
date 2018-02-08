@@ -10,13 +10,13 @@ public class UserDetailRequest {
 	
 	private String emailAddress;
 	
-	private String SocialNetworkSignature;
+	private String sns;
 	
 	private String mobileNumber;
 	
 	private String gender;
 	
-	private Date dateOfRegistration;
+	private String dateOfRegistration;
 	
 
 	public String getRole() {
@@ -35,12 +35,12 @@ public class UserDetailRequest {
 		this.emailAddress = emailAddress;
 	}
 
-	public String getSocialNetworkSignature() {
-		return SocialNetworkSignature;
+	public String getsns() {
+		return sns;
 	}
 
-	public void setSocialNetworkSignature(String socialNetworkSignature) {
-		SocialNetworkSignature = socialNetworkSignature;
+	public void setsns(String sns) {
+		sns = sns;
 	}
 
 	public String getMobileNumber() {
@@ -59,11 +59,11 @@ public class UserDetailRequest {
 		this.gender = gender;
 	}
 
-	public Date getDateOfRegistration() {
+	public String getDateOfRegistration() {
 		return dateOfRegistration;
 	}
 
-	public void setDateOfRegistration(Date dateOfRegistration) {
+	public void setDateOfRegistration(String dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
