@@ -18,4 +18,5 @@ public interface UserService {
 	public boolean updateUser(String userId,User user) throws UserException;
 	public User getUserById(String userId) throws UserException;
 	public List<User> getAllUsers() throws UserException;
+	public User findBySsoId(String ssoId);
 }
