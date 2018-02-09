@@ -4,10 +4,11 @@
 package com.seaker.business.bo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -59,8 +60,40 @@ public class User extends StateFullEntity implements Serializable {
 			return Arrays.stream(Gender.values()).filter(e->e.code==code).findFirst().get();
 		}
 	}
+	public enum State {
+		 
+	    ACTIVE("Active"),
+	    INACTIVE("Inactive"),
+	    DELETED("Deleted"),
+	    LOCKED("Locked");
+	     
+	    private String state;
+	     
+	    private State(final String state){
+	        this.state = state;
+	    }
+	     
+	    public String getState(){
+	        return this.state;
+	    }
+	 
+	    @Override
+	    public String toString(){
+	        return this.state;
+	    }
+	 
+	    public String getName(){
+	        return this.name();
+	    }
+	}
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Column(name="SSO_ID", unique=true, nullable=false)
+	private String ssoId;
+	
+	@Column(name="PASSWORD")
+	private String password;
 	
 	@Column(name = "USER_NAME")
 	private String userName;
@@ -71,10 +104,12 @@ public class User extends StateFullEntity implements Serializable {
 	@Column(name = "USER_EMAIL")
 	private String emailAddress;
 	
+	@Column(name="STATE", nullable=false)
+	private State state;
 	
 	@OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
 	@NotFound(action=NotFoundAction.IGNORE)
-	private List<UserProfile> profiles = new ArrayList<>();
+	private Set<UserProfile> profiles = new HashSet<>();
 
 	@Column(name = "USER_SNS")
 	private String SocialNetworkSignature;
@@ -145,13 +180,7 @@ public class User extends StateFullEntity implements Serializable {
 		this.role = role;
 	}
 
-	public List<UserProfile> getProfiles() {
-		return profiles;
-	}
-
-	public void setProfiles(List<UserProfile> profiles) {
-		this.profiles = profiles;
-	}
+	
 
 	@Enumerated(EnumType.ORDINAL)
 	public Gender getGender() {
@@ -160,5 +189,75 @@ public class User extends StateFullEntity implements Serializable {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public String getSsoId() {
+		return ssoId;
+	}
+
+	public void setSsoId(String ssoId) {
+		this.ssoId = ssoId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<UserProfile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(Set<UserProfile> profiles) {
+		this.profiles = profiles;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result =7 ;
+		result = result *31 + ((ssoId == null) ? 0: ssoId.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) {
+			return true;
+		}
+		if(obj == null) {
+			return false;
+		}
+		if(!(obj instanceof User)) {
+			return false;
+		}
+		User other =(User)obj;
+		if(this.getId() != other.getId()) {
+			return false;
+		}
+		if(ssoId == null) {
+			if(other.ssoId !=null) {
+				return false;
+			}
+		}else if(!ssoId.equals(other.ssoId)){
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Hello"+userName+" welcome "+ssoId;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = State.valueOf(state);
 	}
 }
